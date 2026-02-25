@@ -1,0 +1,323 @@
+/* 블랙 & 골드 테마 */
+:root {
+    --bg-color: #0a0a0a;
+    --text-main: #ffffff;
+    --text-sub: #a0a0a0;
+    --accent: #b8860b;
+    --accent-hover: #936a08;
+    --border: #222222;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, sans-serif;
+    margin: 0;
+}
+
+/* 공통 레이아웃 컨테이너 */
+.gallery-container,
+#catalog-section,
+#auction-room {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* 화면 전환용 유틸리티 */
+.hidden {
+    display: none !important;
+}
+
+/* 헤더  */
+
+.main-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 5px;
+    margin: 0;
+    color: var(--text-main);
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-top: 5px;
+    letter-spacing: 2px;
+}
+
+/* 카탈로그  */
+.art-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.art-card {
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(184, 134, 11, 0.1);
+    padding: 20px;
+    border-radius: 4px;
+    background: #111111;
+}
+
+.art-card:hover {
+    transform: translateY(-10px);
+    border: 1px solid var(--accent);
+    box-shadow: 0 15px 35px rgba(184, 134, 11, 0.2), 0 0 15px rgba(184, 134, 11, 0.1);
+}
+
+/* 카드 내 이미지 영역 */
+.art-placeholder {
+    height: 350px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: #1a1a1a;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.art-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.art-card:hover .art-placeholder img {
+    transform: scale(1.05);
+}
+
+/* 카드 내 정보 텍스트 */
+.art-info h3 {
+    margin: 20px 0 5px;
+    font-size: 1.2rem;
+    color: var(--text-main);
+}
+
+.artist {
+    color: var(--text-sub);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.description {
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.5;
+    margin: 10px 0;
+    font-weight: 300;
+    word-break: keep-all;
+}
+
+.start-price {
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--accent);
+}
+
+/* 경매 화면  */
+
+#auction-room {
+    position: relative;
+    padding-top: 40px;
+}
+
+/* 뒤로가기 버튼 */
+.btn-back {
+    display: inline-block;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.btn-back:hover {
+    background: var(--accent);
+    color: #000;
+}
+
+/* 경매 메인 이미지 프레임 */
+.auction-art-display {
+    width: 100%;
+    height: 500px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#auction-art-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* 경매 레이아웃 (왼쪽 정보 / 오른쪽 입찰) */
+.auction-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    padding: 40px;
+    border: 1px solid var(--border);
+    background: #111111;
+}
+
+/* 왼쪽 패널 정보 */
+.timer-wrapper {
+    margin-bottom: 20px;
+}
+
+#timer-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-sub);
+}
+
+#seconds-display {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ff4d4d;
+}
+
+.art-main-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.current-bid-wrapper {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px solid var(--accent);
+}
+
+#current-price {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+/* 오른쪽 패널 - 입찰 버튼 및 기록 */
+.btn-bid {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-bid:hover {
+    background: var(--accent-hover);
+}
+
+.btn-bid:disabled {
+    background: #333;
+    color: #777;
+    cursor: not-allowed;
+}
+
+.history-panel {
+    margin-top: 40px;
+}
+
+#bid-history {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid var(--border);
+    height: 200px;
+    overflow-y: auto;
+}
+
+#bid-history li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text-sub);
+}
+
+/* 결과 모달  */
+#result-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-content {
+    text-align: center;
+    color: var(--text-main);
+}
+
+.sold-tag {
+    display: inline-block;
+    padding: 5px 15px;
+    background: var(--accent);
+    color: white;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.btn-reset {
+    margin-top: 30px;
+    background: none;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-reset:hover {
+    background: var(--accent);
+    color: white;
+}
+
+/* 애니메이션 */
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
