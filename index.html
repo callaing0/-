@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-<!-- 1) 헤더 -->
 <head>
     <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Minimalist Art Auction</title>
-        <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minimalist Art Auction</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <!-- 2) 카탈로그(갤러리) -->
     <div class="gallery-container">
+        <!-- 1) 헤더 -->
         <header class="main-header">
             <h1 class="logo">A-GALLERY</h1>
             <p class="subtitle">Online Curated Auction</p>
         </header>
     </div>
 
+    <!-- 2) 카탈로그(갤러리) -->
     <section id="catalog-section" class="fade-in">
         <div class="section-header">
-            <h2 style="color: var(--accent); letter-spacing: 3px; font-weight: 300; margin-bottom: 40px;">
+            <h2 class="masterpiece-title">
                 Selected Masterpieces
             </h2>
         </div>
 
         <div class="art-grid">
-            <!-- 1번 -->
+            <!-- 1번째 작품, 고흐의 별이 및나는 밤-->
             <div class="art-card" onclick="selectArt('The Starry Night', 'Vincent van Gogh', 120000000, '₩150,000,000 - ₩250,000,000')">
                 <div class="art-placeholder">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1024px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="Vincent van Gogh">
                 </div>
 
-                <!-- 고흐 작품, 별이 및나는 밤-->
                 <div class="art-info">
                     <h3>The Starry Night</h3>
                         <p class="artist">Vincent van Gogh</p>
@@ -41,13 +40,12 @@
                 </div>
             </div>
 
-            <!-- 2번 -->
+             <!--2번째 작품, 아브라함 미뇽의 금속 화병에 담긴 꽃들 -->
             <div class="art-card" onclick="selectArt('Starry Night Over the Rhone', 'Vincent van Gogh', 82000000, '₩90,000,000 - ₩140,000,000')">
-                <div class="art-placeholder" style="overflow: hidden; background: #111;">
-                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80" alt="Van Gogh" style="width:100%; height:100%; object-fit:cover;">
+                <div class="art-placeholder image-cover">
+                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80" alt="Van Gogh" class="full-img">
                 </div>
                 
-                <!--아브라함 미뇽 작품, 금속 화병에 담긴 꽃들 -->
                 <div class="art-info">
                     <h3>Flowers in a Metal Vase</h3>
                         <p class="artist">Abraham Mignon</p>
@@ -56,13 +54,12 @@
                 </div>
             </div>
 
-            <!-- 3번 -->
+            <!--3번째 작품, 번 존스의 베들레헴의 별 -->
             <div class="art-card" onclick="selectArt('Water Lilies (Nymphéas)', 'Claude Monet', 38000000, '₩45,000,000 - ₩60,000,000')">
-                <div class="art-placeholder" style="overflow: hidden; background: #111;">
-                    <img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=600&q=80" alt="Claude Monet" style="width:100%; height:100%; object-fit:cover;">
+                <div class="art-placeholder image-cover">
+                    <img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=600&q=80" alt="Claude Monet" class="full-img">
                 </div>
 
-                <!--번 존스 작품, 베들레헴의 별 -->
                 <div class="art-info">
                     <h3>The Star of Bethlehem</h3>
                         <p class="artist">Edward Burne-Jones</p>
@@ -136,9 +133,15 @@
     </div>
 
     <!-- (테스트 버튼: 원하시면 auction-room 안으로 넣는 게 더 자연스러움) -->
-    <button onclick="endAuction()" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; padding: 10px; background: red; color: white; border: none; cursor: pointer;">
+    <button onclick="endAuction()" class="btn-test-end">
         테스트: 즉시 종료
     </button>
+
+    <div id="custom-alert" class="hidden">
+        <div id="alert-status">TIME EXPIRED</div>
+        <div id="alert-message"></div>
+        <button id="alert-close-btn" onclick="document.getElementById('custom-alert').classList.add('hidden')">CLOSE</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
