@@ -9,43 +9,42 @@ let bidLogs = []; //{name, amount, secLeft}
 /* 작품 선택 및 경매 시작 */
 
 function selectArt(title, artist, price, estimate) {
-    // 1. 이벤트 타겟으로부터 이미지 경로 추출
+    // 1. 클릭된 카드 요소 가져오기
     const clickedCard = window.event.currentTarget;
+    
+    // 2. 카드 내부에 실제 적혀있는 텍스트 추출 (핵심 수정 사항)
+    const realTitle = clickedCard.querySelector('h3').innerText;
+    const realArtist = clickedCard.querySelector('.artist').innerText;
     const selectedImgSrc = clickedCard.querySelector('img').src;
 
-    // 2. 화면 섹션 전환 (카탈로그 숨기고 경매장 표시)
+    // 3. 화면 섹션 전환
     document.getElementById('catalog-section').classList.add('hidden');
     document.getElementById('auction-room').classList.remove('hidden');
 
-    // 3. 작품 상세 정보 및 이미지 반영
-    document.getElementById('art-title').innerText = title;
-    document.getElementById('art-artist').innerText = artist;
+    // 4. 추출한 실제 정보를 경매장에 반영
+    document.getElementById('art-title').innerText = realTitle;   // 전달받은 인자 대신 realTitle 사용
+    document.getElementById('art-artist').innerText = realArtist; // 전달받은 인자 대신 realArtist 사용
     document.getElementById('auction-art-img').src = selectedImgSrc;
 
-    // 4. 경매 데이터 초기화
+    // 5. 경매 데이터 초기화
     currentPrice = Number(price);
     timeLeft = 60;
-    highestBidder = ""; // 새 경매 시작 시 낙찰자 후보 초기화
+    highestBidder = ""; 
 
-    // 경매 시작 시, 입찰가 입력칸에 현재 최고가(시작가) 자동 입력
+    // 입찰가 입력칸에 현재가 자동 입력
     const amountInput = document.getElementById('bid-amount');
     if (amountInput) amountInput.value = currentPrice;
 
-    // 5. UI 초기화
+    // 6. UI 및 타이머 초기화
     document.getElementById('seconds').innerText = timeLeft;
     document.getElementById('bid-history').innerHTML = "";
     
-    // 입찰 버튼 상태 복구 (비활성화 해제)
-    const bidButtons = document.querySelectorAll('.btn-bid');
-    bidButtons.forEach(button => {
-        button.disabled = false;
-    });
-
-    // 입력창 초기화 및 활성화
+    // 입력창 및 버튼 활성화
     document.getElementById('bidder-name').disabled = false;
     document.getElementById('bid-amount').disabled = false;
+    const bidButtons = document.querySelectorAll('.btn-bid');
+    bidButtons.forEach(button => button.disabled = false);
 
-    // 6. 페이지 상단으로 스크롤 이동 및 타이머 가동
     window.scrollTo(0, 0);
     updateUI();
     startTimer();
