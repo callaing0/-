@@ -221,7 +221,75 @@ body {
     color: var(--accent);
 }
 
-/* 오른쪽 패널 - 입찰 버튼 및 기록 */
+
+/* 오른쪽 패널 - 입찰 필드 및 기록 */
+
+/* 경매 진행창: 이름/가격 입력 + 버튼 정렬 */
+.bid-inputs{
+  display: flex;
+  justify-content: center;   /*  왼쪽 쏠림 방지 */
+  align-items: center;
+  gap: 12px;                 /*  버튼과 간격 */
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* 입력필드: 버튼과 조화로운 너비 */
+.bid-inputs input{
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.18);
+
+  background: #111;
+  color: #f3c623;
+  outline: none;
+
+  width: 260px;    /*  기본 너비(조화용) */
+  max-width: 320px;          
+}
+
+/* 화면이 넓으면 입력칸이 조금 늘어나도 자연스럽게 */
+@media (min-width: 700px){
+  .bid-inputs input{
+    width: 260px;            /* ✅ 너무 작아 보이는 문제 완화 */
+  }
+}
+
+/* 버튼도 폭을 살짝 고정하면 균형이 좋아짐(선택) */
+.bid-inputs .btn-bid{
+  height: 44px;
+  width: auto !important;
+  padding: 0 18px;
+  border-radius: 10px;
+  min-width: 110px;          /* ✅ 버튼 폭 안정화 */
+  margin-bottom: 0;
+}
+
+/* placeholder 색 */
+.bid-inputs input::placeholder{
+  color: rgba(243,198,35,0.65);
+}
+
+/* number input 화살표가 거슬리면(선택) */
+/* 크롬/엣지 */
+.bid-inputs input[type="number"]::-webkit-outer-spin-button,
+.bid-inputs input[type="number"]::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* 파이어폭스 */
+.bid-inputs input[type="number"]{
+  -moz-appearance: textfield;
+}
+
+/* 버튼도 입력창과 높이 맞추기 */
+.bid-inputs .btn-bid{
+  height: 44px;           /*  입력과 같은 높이 */
+  padding: 0 16px;
+  border-radius: 10px;
+}
+
 .btn-bid {
     width: 100%;
     padding: 15px;
@@ -306,6 +374,24 @@ body {
     color: white;
 }
 
+/* 결과 모달 입찰 기록 */
+.result-bid-history {
+  margin-top: 14px;
+}
+
+#result-bid-history {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+#result-bid-history li {
+  padding: 6px 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+
 /* 애니메이션 */
 .fade-in {
     animation: fadeIn 0.8s ease forwards;
@@ -320,87 +406,4 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* 기존 CSS 아래에 추가해 주세요 */
-
-.masterpiece-title {
-    color: var(--accent);
-    letter-spacing: 3px;
-    font-weight: 300;
-    margin-bottom: 40px;
-}
-
-.image-cover {
-    overflow: hidden; 
-    background: #111;
-}
-
-.full-img {
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover;
-}
-
-.btn-test-end {
-    position: fixed; 
-    bottom: 20px; 
-    right: 20px; 
-    z-index: 9999; 
-    padding: 10px; 
-    background: red; 
-    color: white; 
-    border: none; 
-    cursor: pointer;
-}
-
-#custom-alert {
-    position: fixed; 
-    top: 30px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    z-index: 10001; 
-    width: 340px; 
-    background: rgba(15, 15, 15, 0.95); 
-    border: 1px solid #c5a059; 
-    color: white; 
-    padding: 25px; 
-    text-align: center; 
-    box-shadow: 0 20px 50px rgba(0,0,0,0.7); 
-    border-radius: 2px; 
-    backdrop-filter: blur(5px);
-}
-
-#alert-status {
-    display: inline-block; 
-    background: #c5a059; 
-    color: #000; 
-    font-size: 0.65rem; 
-    padding: 2px 8px; 
-    margin-bottom: 15px; 
-    letter-spacing: 2px; 
-    font-weight: bold;
-}
-
-#alert-message {
-    font-size: 0.95rem; 
-    line-height: 1.7; 
-    font-weight: 300; 
-    color: #eee;
-}
-
-#alert-close-btn {
-    margin-top: 20px; 
-    background: transparent; 
-    border: 1px solid #555; 
-    color: #aaa; 
-    padding: 7px 20px; 
-    cursor: pointer; 
-    font-size: 0.75rem; 
-    transition: 0.3s;
-}
-
-#alert-close-btn:hover {
-    color: #fff; 
-    border-color: #fff;
 }
