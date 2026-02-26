@@ -1,149 +1,234 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-
-<head>
+  <!-- 1) 헤더 -->
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Minimalist Art Auction</title>
     <link rel="stylesheet" href="style.css" />
-</head>
+  </head>
 
-<body>
+  <body>
+    <!-- 2) 카탈로그(갤러리) -->
     <div class="gallery-container">
-        <!-- 1) 헤더 -->
-        <header class="main-header">
-            <h1 class="logo">A-GALLERY</h1>
-            <p class="subtitle">Online Curated Auction</p>
-        </header>
+      <header class="main-header">
+        <h1 class="logo">A-GALLERY</h1>
+        <p class="subtitle">Online Curated Auction</p>
+      </header>
     </div>
 
-    <!-- 2) 카탈로그(갤러리) -->
     <section id="catalog-section" class="fade-in">
-        <div class="section-header">
-            <h2 class="masterpiece-title">
-                Selected Masterpieces
-            </h2>
+      <div class="section-header">
+        <h2
+          style="
+            color: var(--accent);
+            letter-spacing: 3px;
+            font-weight: 300;
+            margin-bottom: 40px;
+          "
+        >
+          Selected Masterpieces
+        </h2>
+      </div>
+
+      <div class="art-grid">
+        <!-- 1번 -->
+        <div
+          class="art-card"
+          onclick="
+            selectArt(
+              'The Starry Night',
+              'Vincent van Gogh',
+              120000000,
+              '₩150,000,000 - ₩250,000,000',
+            )
+          "
+        >
+          <div class="art-placeholder">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1024px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
+              alt="Vincent van Gogh"
+            />
+          </div>
+
+          <!-- 고흐 작품, 별이 및나는 밤-->
+          <div class="art-info">
+            <h3>The Starry Night</h3>
+            <p class="artist">Vincent van Gogh</p>
+            <p class="description">
+              이 그림은 고흐가 생폴드모솔 정신병원에 머무는 동안 제작되었으며,
+              동쪽 창문에서 바라본 풍경을 바탕으로 기억과 감정을 담아 상상 속
+              풍경을 묘사하고 있습니다.
+            </p>
+            <p class="start-price">경매 시작가 ₩120,000,000</p>
+          </div>
         </div>
 
-        <div class="art-grid">
-            <!-- 1번째 작품, 고흐의 별이 및나는 밤-->
-            <div class="art-card" onclick="selectArt('The Starry Night', 'Vincent van Gogh', 120000000, '₩150,000,000 - ₩250,000,000')">
-                <div class="art-placeholder">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1024px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="Vincent van Gogh">
-                </div>
+        <!-- 2번 -->
+        <div
+          class="art-card"
+          onclick="
+            selectArt(
+              'Starry Night Over the Rhone',
+              'Vincent van Gogh',
+              82000000,
+              '₩90,000,000 - ₩140,000,000',
+            )
+          "
+        >
+          <div
+            class="art-placeholder"
+            style="overflow: hidden; background: #111"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80"
+              alt="Van Gogh"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
 
-                <div class="art-info">
-                    <h3>The Starry Night</h3>
-                        <p class="artist">Vincent van Gogh</p>
-                        <p class="description">이 그림은 고흐가 생폴드모솔 정신병원에 머무는 동안 제작되었으며, 동쪽 창문에서 바라본 풍경을 바탕으로 기억과 감정을 담아 상상 속 풍경을 묘사하고 있습니다.</p>
-                        <p class="start-price">경매 시작가 ₩120,000,000</p>
-                </div>
-            </div>
-
-             <!--2번째 작품, 아브라함 미뇽의 금속 화병에 담긴 꽃들 -->
-            <div class="art-card" onclick="selectArt('Starry Night Over the Rhone', 'Vincent van Gogh', 82000000, '₩90,000,000 - ₩140,000,000')">
-                <div class="art-placeholder image-cover">
-                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=600&q=80" alt="Van Gogh" class="full-img">
-                </div>
-                
-                <div class="art-info">
-                    <h3>Flowers in a Metal Vase</h3>
-                        <p class="artist">Abraham Mignon</p>
-                        <p class="description">이 그림은 17세기 네덜란드 정물화의 특징을 잘 보여주고 있으며 17세기 네덜란드의 경제적 부와 문화적 풍요로움을 시각화한 동시에, 바니타스(vanitas)라는 주제를 담고 있습니다.</p>
-                        <p class="start-price">경매 시작가 ₩82,000,000</p>
-                </div>
-            </div>
-
-            <!--3번째 작품, 번 존스의 베들레헴의 별 -->
-            <div class="art-card" onclick="selectArt('Water Lilies (Nymphéas)', 'Claude Monet', 38000000, '₩45,000,000 - ₩60,000,000')">
-                <div class="art-placeholder image-cover">
-                    <img src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=600&q=80" alt="Claude Monet" class="full-img">
-                </div>
-
-                <div class="art-info">
-                    <h3>The Star of Bethlehem</h3>
-                        <p class="artist">Edward Burne-Jones</p>
-                        <p class="description">이 그림은 상징주의 양식로 그려졌으며 동방 박사들이 아기 예수를 방문하는 전통적인 기독교 탄생 장면을 묘사하였습니다.</p>
-                        <p class="start-price">경매 시작가 ₩38,000,000</p>
-                </div>
-            </div>
+          <!--아브라함 미뇽 작품, 금속 화병에 담긴 꽃들 -->
+          <div class="art-info">
+            <h3>Flowers in a Metal Vase</h3>
+            <p class="artist">Abraham Mignon</p>
+            <p class="description">
+              이 그림은 17세기 네덜란드 정물화의 특징을 잘 보여주고 있으며
+              17세기 네덜란드의 경제적 부와 문화적 풍요로움을 시각화한 동시에,
+              바니타스(vanitas)라는 주제를 담고 있습니다.
+            </p>
+            <p class="start-price">경매 시작가 ₩82,000,000</p>
+          </div>
         </div>
+
+        <!-- 3번 -->
+        <div
+          class="art-card"
+          onclick="
+            selectArt(
+              'Water Lilies (Nymphéas)',
+              'Claude Monet',
+              38000000,
+              '₩45,000,000 - ₩60,000,000',
+            )
+          "
+        >
+          <div
+            class="art-placeholder"
+            style="overflow: hidden; background: #111"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=600&q=80"
+              alt="Claude Monet"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+
+          <!--번 존스 작품, 베들레헴의 별 -->
+          <div class="art-info">
+            <h3>The Star of Bethlehem</h3>
+            <p class="artist">Edward Burne-Jones</p>
+            <p class="description">
+              이 그림은 상징주의 양식로 그려졌으며 동방 박사들이 아기 예수를
+              방문하는 전통적인 기독교 탄생 장면을 묘사하였습니다.
+            </p>
+            <p class="start-price">경매 시작가 ₩38,000,000</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- 3) 경매 화면(카탈로그 선택 후 보여야 함) -->
     <section id="auction-room" class="hidden">
-            <div class="gallery-container">
-                <button class="btn-back" onclick="resetGallery()">Back to Collection</button>
+      <div class="gallery-container">
+        <button class="btn-back" onclick="resetGallery()">
+          Back to Collection
+        </button>
 
-            <!-- 메인 이미지 -->
-            <div class="auction-art-display">
-                <img id="auction-art-img" alt="auction artwork" />
-            </div>
-
-            <!-- 2열 레이아웃(왼쪽/오른쪽) -->
-            <div class="auction-layout">
-                    <!-- 왼쪽 패널 -->
-                    <div class="auction-left">
-                        <!-- 타이머 -->
-                        <div class="timer-wrapper">
-                            <span id="timer-label">Time Remaining</span>
-                            <div id="seconds-display"><span id="seconds">60</span>s</div>
-                        </div>
-
-                    <!-- 작품 정보 -->
-                    <div class="art-main-info">
-                        <h2 id="art-title">Title</h2>
-                            <p id="art-artist">Artist Name</p>
-                    </div>
-
-                    <!-- 현재가 -->
-                    <div class="current-bid-wrapper">
-                        <span class="label">Current Bid</span>
-                        <div id="current-price">0</div>
-                    </div>
-                </div>
-
-                <!-- 오른쪽 패널 -->
-                <div class="interaction-panel">
-                    <div class="bid-action">
-                        <h3>Place a Bid</h3>
-                            <div class="bid-buttons">
-                                <button onclick="placeBid(50000)" class="btn-bid">+ 50,000</button>
-                                <button onclick="placeBid(100000)" class="btn-bid">+ 100,000</button>
-                            </div>
-                    </div>
-
-                    <div class="history-panel">
-                        <h3>Bid History</h3>
-                            <ul id="bid-history"></ul>
-                    </div>
-                </div>
-            </div>
+        <!-- 메인 이미지 -->
+        <div class="auction-art-display">
+          <img id="auction-art-img" alt="auction artwork" />
         </div>
+
+        <!-- 2열 레이아웃(왼쪽/오른쪽) -->
+        <div class="auction-layout">
+          <!-- 왼쪽 패널 -->
+          <div class="auction-left">
+            <!-- 타이머 -->
+            <div class="timer-wrapper">
+              <span id="timer-label">Time Remaining</span>
+              <div id="seconds-display"><span id="seconds">60</span>s</div>
+            </div>
+
+            <!-- 작품 정보 -->
+            <div class="art-main-info">
+              <h2 id="art-title">Title</h2>
+              <p id="art-artist">Artist Name</p>
+            </div>
+
+            <!-- 현재가 -->
+            <div class="current-bid-wrapper">
+              <span class="label">Current Bid</span>
+              <div id="current-price">0</div>
+            </div>
+          </div>
+
+          <!-- 오른쪽 패널 -->
+          <div class="interaction-panel">
+            <div class="bid-action">
+              <h3>Place a Bid</h3>
+
+              <!-- 기존 bid-buttons 제거 후 입력 방식으로 변경 -->
+              <div class="bid-inputs">
+                <input id="bidder-name" type="text" placeholder="이름" />
+                <input id="bid-amount" type="number" placeholder="입찰가" />
+                <button onclick="submitBid()" class="btn-bid">입찰</button>
+              </div>
+            </div>
+
+            <div class="history-panel">
+              <h3>Bid History</h3>
+              <ul id="bid-history"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- 4) 결과 모달(경매 화면과 별개로 body 직속으로 둬도 됨) -->
     <div id="result-modal" class="hidden">
-        <div class="modal-content">
-            <span class="sold-tag">SOLD</span>
-            <h2 id="winner-info">Winning Bidder Info</h2>
-                <p id="final-price-display"></p>
-            <button onclick="resetGallery()" class="btn-reset">Back to Collection</button>
+      <div class="modal-content">
+        <span class="sold-tag">SOLD</span>
+        <h2 id="winner-info">Winning Bidder Info</h2>
+        <p id="final-price-display"></p>
+        <!-- 결과 모달 내부에 추가 -->
+        <div class="result-bid-history">
+          <h4>입찰 기록</h4>
+          <ul id="result-bid-history"></ul>
         </div>
+        <button onclick="resetGallery()" class="btn-reset">
+          Back to Collection
+        </button>
+      </div>
     </div>
 
     <!-- (테스트 버튼: 원하시면 auction-room 안으로 넣는 게 더 자연스러움) -->
-    <button onclick="endAuction()" class="btn-test-end">
-        테스트: 즉시 종료
+    <button
+      onclick="endAuction()"
+      style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        padding: 10px;
+        background: red;
+        color: white;
+        border: none;
+        cursor: pointer;
+      "
+    >
+      테스트: 즉시 종료
     </button>
 
-    <div id="custom-alert" class="hidden">
-        <div id="alert-status">TIME EXPIRED</div>
-        <div id="alert-message"></div>
-        <button id="alert-close-btn" onclick="document.getElementById('custom-alert').classList.add('hidden')">CLOSE</button>
-    </div>
-
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
