@@ -6,8 +6,8 @@ let timerInterval = null;  // 타이머 제어용
 let highestBidder = ""; // 최고가 입찰자(낙찰자 후보)
 let bidLogs = []; //{name, amount, secLeft}
 
-/* 작품 선택 및 경매 시작 */
-
+/* 작품 선택 및 경매 시작 로직 */
+/* 1번 함수 */
 function selectArt(title, artist, price, estimate) {
     // 1. 클릭된 카드 요소 가져오기
     const clickedCard = window.event.currentTarget;
@@ -53,7 +53,7 @@ function selectArt(title, artist, price, estimate) {
 }
 
 /*   타이머 로직 */
-
+/* 2번 함수 */
 function startTimer() {
     // 기존 타이머가 있다면 중지
     if (timerInterval) clearInterval(timerInterval);
@@ -75,8 +75,8 @@ function startTimer() {
     }, 1000);
 }
 
-/* [4] 입찰 로직 */
-
+/* 입찰 로직 */
+/* 3번 함수 */
 function submitBid() {
     if (timeLeft <= 0) return;
 
@@ -96,7 +96,7 @@ function submitBid() {
         return;
     }
 
-    // ✅ 핵심 요구사항: 최고가 이하이면 입찰 불가
+    // 최고가 이하이면 입찰 불가
     if (bidAmount <= currentPrice) {
         alert(`현재 최고가(₩${currentPrice.toLocaleString()})보다 큰 금액만 입찰할 수 있습니다.`);
         return;
@@ -129,7 +129,7 @@ function submitBid() {
 }
 
 /* UI 업데이트 */
-
+/* 4번 함수 */
 function updateUI() {
     const priceDisplay = document.getElementById('current-price');
     if (priceDisplay) {
@@ -137,8 +137,8 @@ function updateUI() {
     }
 }
 
-/* 경매 종료 및 결과 표시 */
-
+/* 경매 종료 및 결과 표시 로직 */
+/* 5번 함수 */
 function endAuction() {
     // 1. 결과 모달 표시 및 낙찰 정보 삽입
     const resultModal = document.getElementById('result-modal');
@@ -190,6 +190,7 @@ function endAuction() {
 }
 
 /* 초기화 (Back to Collection) */
+/* 6번 함수 */
 function resetGallery() {
     if (timerInterval) clearInterval(timerInterval);
     
